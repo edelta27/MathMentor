@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MathMentor</string>
+
+    <!-- ===== MAIN MENU ===== -->
+    <string name="learning">Learn</string>
+    <string name="practice">Practice</string>
+    <string name="test">Test - test yourself </string>
+
+    <!-- ===== LEARNING MENU ===== -->
+    <string name="choose_number">Choose a number to learn</string>
+    <string name="all">All</string>
+
+    <!-- ===== LEARNING TABLE ===== -->
+    <string name="multiplication_table">Multiplication table of %1$d</string>
+    <string name="full_board">Full multiplication table</string>
+
+    <!-- ===== PRACTICE ===== -->
+    <string name="enter_answer">Enter your answer</string>
+    <string name="good">All right!</string>
+    <string name="lack">lack</string>
+    <string name="correct">Correct</string>
+    <string name="result_correct">%1$s %2$d ✔</string>
+    <string name="result_wrong">%1$s %2$s ✘ (Correct: %3$d)</string>
+    <string name="result_wrong_toast">Wrong. The correct result is %1$d</string>
+    <string name="points">Points %1$d / %2$d</string>
+    <string name="check">Check</string>
+    <string name="enter_result">Enter the result</string>
+    <string name="your_points">Points: 0</string>
+
+    <!-- ===== RESULT PRACTICE ===== -->
+    <string name="your_result">Your score: %1$d/10 \n</string>
+    <string name="perfekt">Perfect! 🎉</string>
+    <string name="very_good_it_will_be">Very good! Just a little more and it will be 10/10 💪</string>
+    <string name="practice_makes_perfect">Practice makes perfect 🙂 Please try again!</string>
+    <string name="return_main_menu">Return to MENU</string>
+    <string name="keep_practicing">Keep practicing</string>
+
+    <!-- ===== TEST ===== -->
+    <string name="result_perfect">Perfect! 100% correct answers!</string>
+    <string name="result_very_good">Very good! %1$d%%.</string>
+    <string name="result_good">You have %1$d%%. Practice some more.</string>
+    <string name="result_needs_practice">Just %1$d%%. Go back to learning</string>
+    <string name="solve_20_examples">Solve 20 examples</string>
+</resources>

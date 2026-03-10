@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">MathMentor</string>
+
+    <!-- ===== MAIN MENU ===== -->
+    <string name="learning">Nauka</string>
+    <string name="practice">Ćwicz</string>
+    <string name="test">Test - sprawdź się </string>
+
+    <!-- ===== LEARNING MENU ===== -->
+    <string name="choose_number">Wybierz liczbę do nauki</string>
+    <string name="all">Cała</string>
+
+    <!-- ===== LEARNING TABLE ===== -->
+    <string name="multiplication_table">Tabliczka mnożenia przez %1$d</string>
+    <string name="full_board">Pełna tabliczka</string>
+
+    <!-- ===== PRACTICE ===== -->
+    <string name="enter_answer">Wpisz odpowiedź</string>
+    <string name="good">Dobrze!</string>
+    <string name="lack">brak</string>
+    <string name="correct">Poprawna</string>
+    <string name="result_correct">%1$s %2$d ✔</string>
+    <string name="result_wrong">%1$s %2$s ✘ (Poprawna: %3$d)</string>
+    <string name="result_wrong_toast">Źle. Poprawny wynik to %1$d</string>
+    <string name="points">Punkty %1$d / %2$d</string>
+    <string name="check">Sprawdź</string>
+    <string name="enter_result">Wpisz wynik</string>
+    <string name="your_points">Punkty: 0</string>
+
+    <!-- ===== RESULT PRACTICE ===== -->
+    <string name="your_result">Twój wynik: %1$d/10 \n</string>
+    <string name="perfekt">Perfekcyjnie! 🎉</string>
+    <string name="very_good_it_will_be">Bardzo dobrze! Jeszcze trochę i będzie 10/10 💪</string>
+    <string name="practice_makes_perfect">Ćwiczenie czyni mistrza 🙂 Spróbuj ponownie!</string>
+    <string name="return_main_menu">Wróć do MENU</string>
+    <string name="keep_practicing">Ćwicz dalej</string>
+
+    <!-- ===== TEST ===== -->
+    <string name="result_perfect">Świetnie! 100% poprawnych odpowiedzi!</string>
+    <string name="result_very_good">Bardzo dobrze! %1$d%%.</string>
+    <string name="result_good">Masz %1$d%%. Poćwicz jeszcze trochę.</string>
+    <string name="result_needs_practice">Tylko %1$d%%. Wróć do nauki.</string>
+    <string name="solve_20_examples">Rozwiąż 20 przykładów</string>
+</resources>
