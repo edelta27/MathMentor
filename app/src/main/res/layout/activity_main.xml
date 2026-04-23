@@ -14,6 +14,17 @@
         android:gravity="center"
         android:padding="24dp">
 
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/settings"
+            android:src="@drawable/outline_apps_24" />
+
         <Button
             android:id="@+id/btnLearning"
             android:layout_width="match_parent"

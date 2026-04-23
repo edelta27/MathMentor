@@ -2,6 +2,7 @@
     <string name="app_name">MathMentor</string>
 
     <!-- ===== MAIN MENU ===== -->
+    <string name="settings">Ustawienia</string>
     <string name="learning">Nauka</string>
     <string name="practice">Ćwicz</string>
     <string name="test">Test - sprawdź się </string>
@@ -41,4 +42,12 @@
     <string name="result_good">Masz %1$d%%. Poćwicz jeszcze trochę.</string>
     <string name="result_needs_practice">Tylko %1$d%%. Wróć do nauki.</string>
     <string name="solve_20_examples">Rozwiąż 20 przykładów</string>
+
+    <!-- ===== SETTINGS ===== -->
+    <string name="select_language">Wybierz język</string>
+    <string name="apply">Zastosuj</string>
+    <string name="change_language">Zmiana języka</string>
+    <string name="confirm_language_change">Czy na pewno chcesz zmienić język?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
 </resources>
