@@ -1,123 +1,158 @@
 package com.example.myapplication
 
+import android.graphics.Color
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class TestActivity : AppCompatActivity() {
-    private val resultIcons = mutableListOf<TextView>()
-    private val correctAnswerViews = mutableListOf<TextView>()
+
+    private lateinit var progressBar: ProgressBar
+    private val tasks = mutableListOf<Pair<Int, Int>>()
+    private val correctAnswers = mutableListOf<Int>()
+    private val editTexts = mutableListOf<EditText>()
+
+    private var currentPage = 0
+    private val tasksPerPage = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         LocaleHelper.applyLanguage(this)
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_test)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        progressBar = findViewById(R.id.progressBar)
+
         val container = findViewById<LinearLayout>(R.id.testContainer)
 
-        val correctAnswers = mutableListOf<Int>()
-        val editTexts = mutableListOf<EditText>()
+        generateTasks()
+        showPage(container)
+    }
 
-// Generujemy 20 przykładów
+    private fun generateTasks() {
+        tasks.clear()
+        correctAnswers.clear()
+
         for (i in 1..20) {
-
             val a = (0..10).random()
             val b = (0..10).random()
-
+            tasks.add(Pair(a, b))
             correctAnswers.add(a * b)
+        }
+    }
 
-            val rowLayout = LinearLayout(this)
-            rowLayout.orientation = LinearLayout.HORIZONTAL
-            rowLayout.layoutParams = LinearLayout.LayoutParams(
+    private fun showPage(container: LinearLayout) {
+
+        container.removeAllViews()
+
+        progressBar.progress = currentPage + 1
+
+        val start = currentPage * tasksPerPage
+        val end = start + tasksPerPage
+
+        for (i in start until end) {
+
+            val (a, b) = tasks[i]
+
+            val card = LinearLayout(this)
+            card.orientation = LinearLayout.HORIZONTAL
+            card.setPadding(24, 24, 24, 24)
+
+            val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            rowLayout.setPadding(0, 16, 0, 16)
+            params.setMargins(0, 16, 0, 16)
+            card.layoutParams = params
+
+            val colors = listOf("#C8E6C9", "#D1C4E9", "#B3E5FC", "#FFF9C4")
+            card.setBackgroundColor(android.graphics.Color.parseColor(colors.random()))
 
             val tvTask = TextView(this)
-            tvTask.text = "$a x $b = "
-            tvTask.textSize = 18f
+            tvTask.text = "$a × $b = "
+            tvTask.textSize = 20f
 
             val etAnswer = EditText(this)
             etAnswer.layoutParams = LinearLayout.LayoutParams(
                 200,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            etAnswer.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            etAnswer.inputType = InputType.TYPE_CLASS_NUMBER
+            etAnswer.textSize = 18f
 
-            val tvResultIcon = TextView(this)
-            tvResultIcon.textSize = 18f
-            tvResultIcon.setPadding(16, 0, 16, 0)
+            if (editTexts.size <= i) {
+                editTexts.add(etAnswer)
+            } else {
+                etAnswer.setText(editTexts[i].text.toString())
+                editTexts[i] = etAnswer
+            }
 
-            val tvCorrectAnswer = TextView(this)
-            tvCorrectAnswer.textSize = 16f
+            card.addView(tvTask)
+            card.addView(etAnswer)
 
-            rowLayout.addView(tvTask)
-            rowLayout.addView(etAnswer)
-            rowLayout.addView(tvResultIcon)
-            rowLayout.addView(tvCorrectAnswer)
-
-            container.addView(rowLayout)
-
-            editTexts.add(etAnswer)
-            resultIcons.add(tvResultIcon)
-            correctAnswerViews.add(tvCorrectAnswer)
+            container.addView(card)
         }
 
-        val btnCheck = Button(this)
-        btnCheck.text = getString(R.string.check)
-        btnCheck.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
+        val btnNext = Button(this)
+
+        if (currentPage < 3) {
+            btnNext.text = "Dalej"
+        } else {
+            btnNext.text = "Sprawdź"
+        }
+
+        btnNext.setOnClickListener {
+            if (currentPage < 3) {
+                currentPage++
+                showPage(container)
+            } else {
+                showResults(container)
+            }
+        }
+
+        container.addView(btnNext)
+    }
+
+    private fun showResults(container: LinearLayout) {
+
+        container.removeAllViews()
+
+        var score = 0
+
+        for (i in 0 until 20) {
+
+            val (a, b) = tasks[i]
+            val userAnswer = editTexts[i].text.toString().toIntOrNull()
+
+            val tv = TextView(this)
+            tv.textSize = 18f
+            tv.setPadding(0, 8, 0, 8)
+
+            if (userAnswer == correctAnswers[i]) {
+                tv.text = "$a × $b = $userAnswer ✔"
+                tv.setTextColor(Color.GREEN)
+                score++
+            } else {
+                tv.text = "$a × $b = ${userAnswer ?: "-"} ✘ (${correctAnswers[i]})"
+                tv.setTextColor(Color.RED)
+            }
+
+            container.addView(tv)
+        }
+
+        val percentage = (score * 100) / 20
 
         val tvResult = TextView(this)
-        tvResult.textSize = 18f
+        tvResult.textSize = 20f
         tvResult.setPadding(0, 24, 0, 0)
 
-        container.addView(btnCheck)
-        container.addView(tvResult)
-
-        btnCheck.setOnClickListener {
-
-            var score = 0
-
-            for (i in 0 until 20) {
-
-                val userAnswer = editTexts[i].text.toString().toIntOrNull()
-
-
-                if (userAnswer == correctAnswers[i]) {
-                    score++
-                    resultIcons[i].text = "✔"
-                    resultIcons[i].setTextColor(android.graphics.Color.GREEN)
-                    correctAnswerViews[i].text = ""
-                } else {
-                    resultIcons[i].text = "✘"
-                    resultIcons[i].setTextColor(android.graphics.Color.RED)
-                    correctAnswerViews[i].text = " ${correctAnswers[i]}"
-                }
-            }
-
-            val percentage = (score * 100) / 20
-            when {
-                percentage == 100 -> tvResult.text = getString(R.string.result_perfect)
-                percentage >= 80 -> tvResult.text = getString(R.string.result_very_good, percentage)
-                percentage >= 50 -> tvResult.text = getString(R.string.result_good, percentage)
-                else -> tvResult.text = getString(R.string.result_needs_practice, percentage)
-            }
-
+        tvResult.text = when {
+            percentage == 100 -> getString(R.string.result_perfect)
+            percentage >= 80 -> getString(R.string.result_very_good, percentage)
+            percentage >= 50 -> getString(R.string.result_good, percentage)
+            else -> getString(R.string.result_needs_practice, percentage)
         }
+
+        container.addView(tvResult)
     }
 }

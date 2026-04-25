@@ -43,6 +43,7 @@
     <string name="result_good">You have %1$d%%. Practice some more.</string>
     <string name="result_needs_practice">Just %1$d%%. Go back to learning</string>
     <string name="solve_20_examples">Solve 20 examples</string>
+    <string name="next">Next</string>
 
     <!-- ===== SETTINGS ===== -->
     <string name="select_language">Select language</string>
