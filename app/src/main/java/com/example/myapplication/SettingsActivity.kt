@@ -13,6 +13,7 @@ import java.util.Locale
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.applyLanguage(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         val spinner = findViewById<Spinner>(R.id.spinnerLanguage)

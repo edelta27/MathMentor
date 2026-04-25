@@ -15,6 +15,7 @@ class TestActivity : AppCompatActivity() {
     private val correctAnswerViews = mutableListOf<TextView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.applyLanguage(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_test)

@@ -10,13 +10,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        android:padding="24dp">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <ImageButton
             android:id="@+id/btnSettings"
-            android:layout_width="48dp"
+            android:layout_width="61dp"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -25,25 +25,67 @@
             android:contentDescription="@string/settings"
             android:src="@drawable/outline_apps_24" />
 
-        <Button
-            android:id="@+id/btnLearning"
+        <!-- LEARNING -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLearning"
+            android:foreground="?attr/selectableItemBackground"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/learning"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#B3E5FC">
 
-        <Button
-            android:id="@+id/btnPractice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/practice"
-            android:layout_marginBottom="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/learning"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
 
-        <Button
-            android:id="@+id/btnTest"
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- PRACTICE -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPractice"
+            android:foreground="?attr/selectableItemBackground"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/test"/>
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#C8E6C9">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/practice"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- TEST -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTest"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#D1C4E9">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/test"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
 

@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class LearningMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.applyLanguage(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_learning_menu)

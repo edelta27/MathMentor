@@ -8,16 +8,18 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.content.Intent
 import android.widget.ImageButton
+import com.google.android.material.card.MaterialCardView
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.applyLanguage(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val btnPractice = findViewById<Button>(R.id.btnPractice)
-        val btnTest = findViewById<Button>(R.id.btnTest)
-        val btnLearning = findViewById<Button>(R.id.btnLearning)
+        val cardLearning = findViewById<MaterialCardView>(R.id.cardLearning)
+        val cardPractice = findViewById<MaterialCardView>(R.id.cardPractice)
+        val cardTest = findViewById<MaterialCardView>(R.id.cardTest)
 
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
         val lang = prefs.getString("lang", "pl") ?: "pl"
@@ -30,19 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         resources.updateConfiguration(config, resources.displayMetrics)
 
-        btnLearning.setOnClickListener {
-            val intent = Intent(this, LearningMenuActivity::class.java)
-            startActivity(intent)
+        cardLearning.setOnClickListener {
+            startActivity(Intent(this, LearningMenuActivity::class.java))
         }
 
-        btnPractice.setOnClickListener {
-            val intent = Intent(this, PracticeActivity::class.java)
-            startActivity(intent)
+        cardPractice.setOnClickListener {
+            startActivity(Intent(this, PracticeActivity::class.java))
         }
 
-        btnTest.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
-            startActivity(intent)
+        cardTest.setOnClickListener {
+            startActivity(Intent(this, TestActivity::class.java))
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
