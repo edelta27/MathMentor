@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.edyta.mathmentor
 
 import android.content.Context
 import java.util.Locale

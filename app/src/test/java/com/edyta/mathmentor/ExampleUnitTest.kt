@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.edyta.mathmentor
 
 import org.junit.Test
 

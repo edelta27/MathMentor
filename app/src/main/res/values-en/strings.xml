@@ -11,10 +11,13 @@
     <!-- ===== LEARNING MENU ===== -->
     <string name="choose_number">Choose a number to learn</string>
     <string name="all">All</string>
+    <string name="multiplication">MULTIPLICATION</string>
+    <string name="division">DIVISION</string>
 
     <!-- ===== LEARNING TABLE ===== -->
     <string name="multiplication_table">Multiplication table of %1$d</string>
-    <string name="full_board">Full multiplication table</string>
+    <string name="full_board">Full table</string>
+    <string name="division_table">Division table of %1$d</string>
 
     <!-- ===== PRACTICE ===== -->
     <string name="enter_answer">Enter your answer</string>

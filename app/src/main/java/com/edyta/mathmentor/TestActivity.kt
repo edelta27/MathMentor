@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.edyta.mathmentor
 
 import android.graphics.Color
 import android.os.Bundle
@@ -32,16 +32,25 @@ class TestActivity : AppCompatActivity() {
     private fun generateTasks() {
         tasks.clear()
         correctAnswers.clear()
+        val mode = intent.getStringExtra("MODE") ?: "multiplication"
 
         for (i in 1..20) {
             val a = (0..10).random()
             val b = (0..10).random()
-            tasks.add(Pair(a, b))
-            correctAnswers.add(a * b)
+            if (mode == "multiplication") {
+                tasks.add(Pair(a, b))
+                correctAnswers.add(a * b)
+            } else {
+                val result = a * b
+                tasks.add(Pair(result, a)) // np 12 ÷ 3
+                correctAnswers.add(b)
+            }
         }
     }
 
     private fun showPage(container: LinearLayout) {
+
+        val mode = intent.getStringExtra("MODE") ?: "multiplication"
 
         container.removeAllViews()
 
@@ -69,7 +78,14 @@ class TestActivity : AppCompatActivity() {
             card.setBackgroundColor(android.graphics.Color.parseColor(colors.random()))
 
             val tvTask = TextView(this)
-            tvTask.text = "$a × $b = "
+
+            val text = if (mode == "multiplication") {
+                "$a × $b = "
+            } else {
+                "$a ÷ $b = "
+            }
+
+            tvTask.text = text
             tvTask.textSize = 20f
 
             val etAnswer = EditText(this)

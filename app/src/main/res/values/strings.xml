@@ -10,10 +10,14 @@
     <!-- ===== LEARNING MENU ===== -->
     <string name="choose_number">Wybierz liczbę do nauki</string>
     <string name="all">Cała</string>
+    <string name="multiplication">MNOŻENIE</string>
+    <string name="division">DZIELENIE</string>
 
     <!-- ===== LEARNING TABLE ===== -->
     <string name="multiplication_table">Tabliczka mnożenia przez %1$d</string>
     <string name="full_board">Pełna tabliczka</string>
+    <string name="division_table">Tabliczka dzielenia przez %1$d</string>
+
 
     <!-- ===== PRACTICE ===== -->
     <string name="enter_answer">Wpisz odpowiedź</string>

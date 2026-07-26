@@ -19,6 +19,7 @@
             android:exported="false" />
         <activity
             android:name=".LearningTableActivity"
+            android:label=""
             android:exported="false" />
         <activity
             android:name=".LearningMenuActivity"
